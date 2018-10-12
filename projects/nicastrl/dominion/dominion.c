@@ -651,6 +651,14 @@ void playAdventurer(int currentPlayer, int handPos, struct gameState* state, int
   	}
 	  drawCard(currentPlayer, state);
 	  cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
+	  if (cardDrawn == copper  || cardDrawn == gold)
+	    drawntreasure++;
+	  else{
+	    temphand[z]=cardDrawn;
+	    state->handCount[currentPlayer]--; //this should just remove the top card (the most recently drawn one).
+	    z++;
+	  }
+	  /* Pre=bug code - note the removal of silver from card drawn to create teh bug
 	  if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
 	    drawntreasure++;
 	  else{
@@ -658,6 +666,7 @@ void playAdventurer(int currentPlayer, int handPos, struct gameState* state, int
 	    state->handCount[currentPlayer]--; //this should just remove the top card (the most recently drawn one).
 	    z++;
 	  }
+	  */
   }
   while(z-1>=0){
 	  state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z-1]; // discard all cards in play that have been drawn
@@ -668,8 +677,8 @@ void playAdventurer(int currentPlayer, int handPos, struct gameState* state, int
 
 void playSmithy(int currentPlayer, int handPos, struct gameState* state) {
   int i;
-  //+3 Cards
-  for (i = 0; i < 3; i++){
+  //+3 Cards   BUG - Should be < 3
+  for (i = 0; i < 2; i++){
 	  drawCard(currentPlayer, state);
 	}
 			
@@ -691,7 +700,8 @@ void playCouncilRoom(int currentPlayer, int handPos, struct gameState* state) {
   state->numBuys++;
 	
   //Each other player draws a card
-  for (i = 0; i < state->numPlayers; i++) {
+  //BUG - skip a person by making this start at i = 1 rather than i = 0
+  for (i = 1; i < state->numPlayers; i++) {
 	  if ( i != currentPlayer ){
 	      drawCard(i, state);
     }
@@ -707,7 +717,8 @@ void playVillage(int currentPlayer, int handPos, struct gameState* state) {
   drawCard(currentPlayer, state);
 	
   //+2 Actions
-  state->numActions = state->numActions + 2;
+  //BUG - Add 3 actions rather than 2
+  state->numActions = state->numActions + 3;
 	
   //discard played card from hand
   discardCard(handPos, currentPlayer, state, 0);
@@ -779,7 +790,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
   int tributeRevealedCards[2] = {-1, -1};
   int temphand[MAX_HAND];// moved above the if statement
   int drawntreasure=0;
-  int cardDrawn;
+  int cardDrawn=0;
   int z = 0;// this is the counter for the temp hand
   if (nextPlayer > (state->numPlayers - 1)){
     nextPlayer = 0;
