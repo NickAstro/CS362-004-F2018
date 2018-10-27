@@ -6,13 +6,42 @@
 char inputChar()
 {
     // TODO: rewrite this function
-    return ' ';
+    
+    /*Goal - identify the ASCII chars worth testing, bound this range in rand,
+    convert to char, return 
+    OR- just limit to the end result cases
+    
+    I will go with the latter since we don't get value out of testing the chars
+    that aren't of note in the testme function
+    */
+    char possibleChars[9] = {'[', ']', '(', ')', '{', '}', ' ', 'x', 'a' };
+    
+    return (possibleChars[rand()%9]);
 }
 
 char *inputString()
 {
     // TODO: rewrite this function
-    return "";
+    
+    /*
+    Goal - limit the string output to a fixed length (5 chars + \0), 
+    limit chars as much as possible as 25^5 is nearly 12MM and that will 
+    excceed the 5 min limit
+    */
+    
+    char myString[6];
+    myString[5] = '\0';
+    
+    //fill in the 5 random 
+    char possibleChars[8] = {'R', 'E', 'S', 'T', 'r', 'e', 's', 't'};
+    
+    //fill the array with results
+    int i;
+    for (i = 0; i < 5; i++)
+      myString[i] = possibleChars[rand()%8];
+    
+    char *result = myString;
+    return result;
 }
 
 void testme()
