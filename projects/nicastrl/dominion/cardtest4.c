@@ -30,29 +30,29 @@ int main() {
     
     printf("\n\n****** Entering adventurer card Test ****** \n\n");
     
-    gameState.deckCount[1] = 10;
-    gameState.handCount[1] = 10;
-    gameState.discardCount[1] = 10;
+    gameState.deckCount[0] = 10;
+    gameState.handCount[0] = 10;
+    gameState.discardCount[0] = 10;
     //fill everything with copper first
     for (i = 0; i<10;i++){
-        gameState.deck[1][i] = copper;
-        gameState.discard[1][i] = copper;
-        gameState.hand[1][i] = copper;
+        gameState.deck[0][i] = copper;
+        gameState.discard[0][i] = copper;
+        gameState.hand[0][i] = copper;
     }
-    gameState.hand[1][0] = adventurer; //force adventurer to test
+    gameState.hand[0][0] = adventurer; //force adventurer to test
 
     printf("\n****** T1: Pre-play state checks ******\n");
     
-	for(i = 0; i < gameState.handCount[1]; i++){
-		if(gameState.hand[1][i] == copper || gameState.hand[1][i] == silver || gameState.hand[1][i] == gold){
+	for(i = 0; i < gameState.handCount[0]; i++){
+		if(gameState.hand[0][i] == copper || gameState.hand[0][i] == silver || gameState.hand[0][i] == gold){
 			beforeTreasureCount++;
 		}
 	}
     
     printf("\n****** T1a: Deck ******\n");
-     printf("Deck Count expected: %d\nDeck Count actual: %d\n", 10, gameState.deckCount[1]);
+     printf("Deck Count expected: %d\nDeck Count actual: %d\n", 10, gameState.deckCount[0]);
     
-    outcome = localAssert(10, gameState.deckCount[1]);
+    outcome = localAssert(10, gameState.deckCount[0]);
     evaluateOutcome(outcome);
     if(isPassing)
         printf("\n          ** TEST PASSED **\n");
@@ -63,8 +63,8 @@ int main() {
     
     printf("\n****** T1b: handCount ******\n");
     
-     printf("hand Count expected: %d\nHand Count actual: %d\n", 10, gameState.handCount[1]);
-    outcome = localAssert(10, gameState.handCount[1]);
+     printf("hand Count expected: %d\nHand Count actual: %d\n", 10, gameState.handCount[0]);
+    outcome = localAssert(10, gameState.handCount[0]);
     evaluateOutcome(outcome);
     if(isPassing)
         printf("\n          ** TEST PASSED **\n");
@@ -75,8 +75,8 @@ int main() {
     
     printf("\n****** T1c: discardCount ******\n");
     
-     printf("discard Count expected: %d\nDiscard Count actual: %d\n", 10, gameState.discardCount[1]);
-    outcome = localAssert(10, gameState.discardCount[1]);
+     printf("discard Count expected: %d\nDiscard Count actual: %d\n", 10, gameState.discardCount[0]);
+    outcome = localAssert(10, gameState.discardCount[0]);
     evaluateOutcome(outcome);
     if(isPassing)
         printf("\n          ** TEST PASSED **\n");
@@ -102,9 +102,9 @@ int main() {
     //then repeat all the above tests 
     printf("\n****** T2: Post-play state checks ******\n");
     printf("\n****** T2a: Deck ******\n");
-     printf("Deck Count expected: %d\nDeck Count actual: %d\n", 10, gameState.deckCount[1]);
+     printf("Deck Count expected: %d\nDeck Count actual: %d\n", 8, gameState.deckCount[0]);
     
-    outcome = localAssert(10 -0, gameState.deckCount[1]);
+    outcome = localAssert(10 -2, gameState.deckCount[0]);
     evaluateOutcome(outcome);
     if(isPassing)
         printf("\n          ** TEST PASSED **\n");
@@ -115,8 +115,8 @@ int main() {
     
     printf("\n****** T2b: handCount ******\n");
     
-     printf("hand Count expected: %d\nHand Count actual: %d\n", 10, gameState.handCount[1]);
-    outcome = localAssert(10 + 0, gameState.handCount[1]);
+     printf("hand Count expected: %d\nHand Count actual: %d\n", 12, gameState.handCount[0]);
+    outcome = localAssert(10 + 2, gameState.handCount[0]);
     evaluateOutcome(outcome);
     if(isPassing)
         printf("\n          ** TEST PASSED **\n");
@@ -127,8 +127,8 @@ int main() {
     
     printf("\n****** T2c: numActions ******\n");
     
-     printf("actuion Count expected: %d\nAction Count actual: %d\n", 1, gameState.numActions);
-    outcome = localAssert(1, gameState.numActions);
+     printf("actuion Count expected: %d\nAction Count actual: %d\n", 0, gameState.numActions);
+    outcome = localAssert(0, gameState.numActions);
     evaluateOutcome(outcome);
     if(isPassing)
         printf("\n          ** TEST PASSED **\n");
@@ -152,14 +152,14 @@ int main() {
     
 
 
-	for(i = 0; i < gameState.handCount[1]; i++){
-		if(gameState.hand[1][i] == copper || gameState.hand[1][i] == silver || gameState.hand[1][i] == gold){
+	for(i = 0; i < gameState.handCount[0]; i++){
+		if(gameState.hand[0][i] == copper || gameState.hand[0][i] == silver || gameState.hand[0][i] == gold){
 			afterTreasureCount++;
 		}
 	}
 	
-    printf("Treasure Count expected: %d\nTreasure count Count actual: %d\n", beforeTreasureCount - 2, afterTreasureCount);
-    outcome = localAssert(beforeTreasureCount - 2, afterTreasureCount);
+    printf("Treasure Count expected: %d\nTreasure count Count actual: %d\n", beforeTreasureCount + 2, afterTreasureCount);
+    outcome = localAssert(beforeTreasureCount + 2, afterTreasureCount);
     evaluateOutcome(outcome);
     if(isPassing)
         printf("\n          ** TEST PASSED **\n");

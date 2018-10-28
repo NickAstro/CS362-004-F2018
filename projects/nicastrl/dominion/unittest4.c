@@ -63,7 +63,7 @@ int main()
     
     
     
-    printf("\n****** whoseTurn Function Final result ******\n");
+    printf("\n****** numHandCards Function Final result ******\n");
     if(allTestsPassed)
         printf("\n   ** ALL TEST PASSED **\n");
     else
