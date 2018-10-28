@@ -718,7 +718,7 @@ void playVillage(int currentPlayer, int handPos, struct gameState* state) {
 	
   //+2 Actions
   //BUG - Add 3 actions rather than 2
-  state->numActions = state->numActions + 3;
+  state->numActions = (state->numActions) + 3;
 	
   //discard played card from hand
   discardCard(handPos, currentPlayer, state, 0);
