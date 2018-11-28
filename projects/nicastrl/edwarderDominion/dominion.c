@@ -667,10 +667,11 @@ void playAdventurerCard (int currentPlayer, int handPos, struct gameState* state
 
 void playSmithyCard(int currentPlayer, int handPos, struct gameState* state) {
   int i;
-  //+3 Cards Bug - i < 3
-  for (i = 0; i < 4; i++)
+
+  for (i = 0; i < 3; i++)
   {
     drawCard(currentPlayer, state);
+    //printf(“deck count: %d \n”, gameState.deckCount[0]);
   }
 
   //discard card from hand

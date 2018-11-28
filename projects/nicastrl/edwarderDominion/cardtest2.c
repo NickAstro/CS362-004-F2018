@@ -40,8 +40,10 @@ int main() {
     evaluateOutcome(outcome);
     if(isPassing)
         printf("\n          ** TEST PASSED **\n");
-    else
+    else {
         printf("\n          ** TEST FAILED ** \n");
+        printf("\n          ** expecting %d  received %d ** \n", 10, gameState.deckCount[0]);
+    }
     isPassing = 1;
     
     
@@ -50,8 +52,10 @@ int main() {
     evaluateOutcome(outcome);
     if(isPassing)
         printf("\n          ** TEST PASSED **\n");
-    else
+    else {
         printf("\n          ** TEST FAILED ** \n");
+        printf("\n          ** expecting %d  received %d ** \n", 10, gameState.handCount[0]);
+    }
     isPassing = 1;
     
     
@@ -60,8 +64,10 @@ int main() {
     evaluateOutcome(outcome);
     if(isPassing)
         printf("\n          ** TEST PASSED **\n");
-    else
+    else {
         printf("\n          ** TEST FAILED ** \n");
+        printf("\n          ** expecting %d  received %d ** \n", 10, gameState.discardCount[0]);
+    }
     isPassing = 1;
     
     
@@ -70,8 +76,10 @@ int main() {
     evaluateOutcome(outcome);
     if(isPassing)
         printf("\n          ** TEST PASSED **\n");
-    else
+    else {
         printf("\n          ** TEST FAILED ** \n");
+        printf("\n          ** expecting %d  received %d ** \n", 1, gameState.numActions);
+    }
     isPassing = 1;
     
     
@@ -86,8 +94,10 @@ int main() {
     evaluateOutcome(outcome);
     if(isPassing)
         printf("\n          ** TEST PASSED **\n");
-    else
+    else {
         printf("\n          ** TEST FAILED ** \n");
+        printf("\n          ** expecting %d  received %d ** \n", 9, gameState.deckCount[0]);
+    }
     isPassing = 1;
     
     
@@ -97,8 +107,10 @@ int main() {
     evaluateOutcome(outcome);
     if(isPassing)
         printf("\n          ** TEST PASSED **\n");
-    else
+    else {
         printf("\n          ** TEST FAILED ** \n");
+        printf("\n          ** expecting %d  received %d ** \n", 10, gameState.handCount[0]);
+    }
     isPassing = 1;
     
     
@@ -108,8 +120,10 @@ int main() {
     evaluateOutcome(outcome);
     if(isPassing)
         printf("\n          ** TEST PASSED **\n");
-    else
+    else {
         printf("\n          ** TEST FAILED ** \n");
+        printf("\n          ** expecting %d  received %d ** \n", 11, gameState.discardCount[0]);
+    }
     isPassing = 1;
  
  
@@ -119,8 +133,10 @@ int main() {
     evaluateOutcome(outcome);
     if(isPassing)
         printf("\n          ** TEST PASSED **\n");
-    else
+    else {
         printf("\n          ** TEST FAILED ** \n");
+        printf("\n          ** expecting %d  received %d ** \n", 3, gameState.numActions);
+    }
     isPassing = 1;
  
      
