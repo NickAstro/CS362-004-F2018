@@ -315,7 +315,6 @@ public class UrlValidatorTest extends TestCase {
             else{
                 expected = false;
             }
-
            try{
                result = valid.isValid(concatUrl);
                if(expected == result)
